@@ -2,22 +2,74 @@
 #include "Customer.h"
 #include "iostream"
 using namespace std;
-int addEmployee(){
+void SortByAlpha(Employee employees[],int empcout);
+void SortByBB(Employee employees[],int empcount);
+int addEmployee(Employee emp,Employee employees[],int& empcount){
+    employees[empcount]=emp;
+    empcount++;
     return 0;
 }
-int removeEmployee(){
+int removeEmployee(Employee employees[],int& empcount,int empID){
+    int index=0;
+    while (index<empcount && employees[index].employeeID!=empID){
+        index++;
+    }
+    if (index==empcount){
+        cout <<"Employee not found";
+        return 1;
+    }
+    else{
+        for (int i=index;i<empcount-1;i++){
+            employees[i]=employees[i+1];
+        }
+        empcount--;
+    }
     return 0;
 }
-int updateEmployee(){
+int updateEmployee(Employee employees[],int empcount,int empID,Employee updatedEmp){
+    int index=0;
+    while (index<empcount && employees[index].employeeID!=empID){
+        index++;
+    }
+    if (index==empcount){
+        cout <<"Employee not found";
+        return 1;
+    }
+    else{
+        employees[index]=updatedEmp;
+    }
     return 0;
 }
-int displayEmployeeAlpha(){
+int displayEmployeeAlpha(Employee employees[],int empcount){
+    SortByAlpha(employees,empcount);
+    for (int i=0;i<empcount;i++){
+        cout <<"Employee ID: " << employees[i].employeeID << endl;
+        cout <<"Name: " << employees[i].name << " " << employees[i].lastName << endl;
+        cout <<"Address: " << employees[i].adress << endl;
+        cout <<"Salary: " << employees[i].salary << endl;
+        cout <<"Hire Date: " << employees[i].hireDate << endl;
+        cout <<"Bank Branch: " << employees[i].BankBranch << endl;
+        cout <<"------------------------" << endl;
+    }
     return 0;
 }
-int displayEmployeeByBB(){
+int displayEmployeeByBB(Employee employees[],int empcount){
+    SortByBB(employees,empcount);
+    for (int i=0;i<empcount;i++){
+        cout <<"Employee ID: " << employees[i].employeeID << endl;
+        cout <<"Name: " << employees[i].name << " " << employees[i].lastName << endl;
+        cout <<"Address: " << employees[i].adress << endl;
+        cout <<"Salary: " << employees[i].salary << endl;
+        cout <<"Hire Date: " << employees[i].hireDate << endl;
+        cout <<"Bank Branch: " << employees[i].BankBranch << endl;
+        cout <<"------------------------" << endl;
+    }
     return 0;
 }
-int earliestHireDate(){
+int earliestHireDate(Employee employees[],int empcount){
+    string maxdate=employees[0].hireDate;
+    for (int i=1;i<empcount;i++){
+    }
     return 0;
 }
 int latestHireDate(){
