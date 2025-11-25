@@ -2,7 +2,12 @@
 #include "LoanMeth.h"
 #include <iostream>
 using namespace std;
-int totalnumofloans(){
+int totalnumofloans(const Customer arr[]){
+    int sum=0;
+    for (int i=0; i<10;i++){
+        sum+= arr[i].loans->size;
+    }
+
     return 0;
 }
 int numofloansbytype(){
