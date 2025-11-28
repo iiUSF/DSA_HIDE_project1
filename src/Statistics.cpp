@@ -12,13 +12,13 @@ void totalnumofloans(const Customer arr[],int size){
 }
 void numofloansbytype(const Customer arr[],int size){
     if(size==0){
-    cout<<"There are no costumers";
+    cout<<"There are no custumers";
     }
     else{
     int carN=0,homeN=0,studentN=0, businessN=0;
     LoanNode* n;
     for (int i=0;i<size;i++){
-        if(!isEmpty(*arr[i].loans)){
+        if(arr[i].loans && !isEmpty(*arr[i].loans)){
         n=arr[i].loans->head;
         while(n){
             if (n->data.loanType=="car") carN++;
@@ -39,13 +39,13 @@ void numofloansbytype(const Customer arr[],int size){
 }
 void numofloansbystatus(const Customer arr[],int size){
     if(size==0){
-        cout<<"There are no costumers";
+        cout<<"There are no customer";
     }
     else{
     int activeN=0,completedN=0,overdueN=0;
     LoanNode* n;
     for (int i=0;i<size;i++){
-        if(!isEmpty(*arr[i].loans)){
+        if(arr[i].loans && !isEmpty(*arr[i].loans)){
         n=arr[i].loans->head;
         while(n){
             if (n->data.status=="active") activeN++;
@@ -70,13 +70,13 @@ bool isInDate(string startDateR,string endDateR,string startDate,string endDate)
 }
 void activeloanindate(const Customer arr[],int size,string startDateR,string endDateR){
     if(size==0){
-        cout<<"There are no costumers";
+        cout<<"There are no customer";
     }
     else{
         int number=0;
         LoanNode* n;
         for (int i=0;i<size;i++){
-            if(!isEmpty(*arr[i].loans)){
+            if(arr[i].loans && !isEmpty(*arr[i].loans)){
             n=arr[i].loans->head;
             while(n){
                 if(n->data.status=="active" && isInDate(normalize(startDateR),normalize(endDateR),normalize(n->data.startDate),normalize(n->data.endDate))){
@@ -92,13 +92,13 @@ void activeloanindate(const Customer arr[],int size,string startDateR,string end
 }
 void highestloanamount(const Customer arr[],int size){
     if(size==0){
-        cout<<"There are no costumers";
+        cout<<"There are no customer";
     }
     else{
         double higher=0.0;
         LoanNode* n;
         for (int i=0;i<size;i++){
-            if(!isEmpty(*arr[i].loans)){
+            if(arr[i].loans && !isEmpty(*arr[i].loans)){
             n=arr[i].loans->head;
             while(n){
                 if(n->data.principalAmount>higher){
@@ -113,7 +113,7 @@ void highestloanamount(const Customer arr[],int size){
 }
 void highestbalance(const Customer arr[],int size){
     if(size==0){
-    cout<<"There are no costumers";
+    cout<<"There are no customer";
     }
     else{
         double higher=arr[0].balance;
@@ -127,7 +127,7 @@ void highestbalance(const Customer arr[],int size){
 }
 void lowestbalance(const Customer arr[],int size){
     if(size==0){
-    cout<<"There are no costumers";
+    cout<<"There are no customer";
     }
     else{
         double lowest=arr[0].balance;
@@ -146,6 +146,8 @@ void NumberofEmployees(const Employee employeeArr[],int size){
 void NumberofEmployeesbyBB(const Employee arr[],int size,int branches){
     int branchesArr[15];
     int employeesbyBBarr[15]={0};
+    if (branches>15) cout << "Max number of branches reached";
+    else{
     for(int i=0;i<branches;i++){
         branchesArr[i]=i+1;
     }
@@ -166,6 +168,7 @@ void NumberofEmployeesbyBB(const Employee arr[],int size,int branches){
         cout<<"nmbr of employees in branche: "<<i+1<<"-->"<<employeesbyBBarr[i]<<endl;
     }
 }
+
 int Main(){
     return 0;
 }
